@@ -1,3 +1,5 @@
+import ysdlb.foundation.component.Student;
+
 public class EqualTest {
     public static void main(String[] args) {
         Student stu = new Student(null, "John");
