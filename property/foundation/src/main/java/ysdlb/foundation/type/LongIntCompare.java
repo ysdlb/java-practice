@@ -1,4 +1,4 @@
-package type;
+package ysdlb.foundation.type;
 
 public class LongIntCompare {
     public static void main(String[] args) {
