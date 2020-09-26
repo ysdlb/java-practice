@@ -12,7 +12,7 @@ import java.util.stream.Stream;
  */
 public class ParallelStream {
     public static void main(String[] args) {
-        Function<Stream<String>, Long> timeOperation = (Stream<String> stream) -> {
+        Function<Stream<String>, Long> timeOperation = stream -> {
             long time1 = System.nanoTime();
             final List<String> list =
                     stream
