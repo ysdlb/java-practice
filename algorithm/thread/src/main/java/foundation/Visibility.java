@@ -31,6 +31,7 @@ class TimeConsumingTask implements Runnable {
                 }
             }
         }
+         * java8 已经不存在这个问题了
          */
         if (toCancel) {
             System.out.println("Task was canceled.");
