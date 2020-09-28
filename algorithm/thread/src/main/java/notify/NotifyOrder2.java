@@ -1,5 +1,7 @@
-public class NotifyOrder1 {
-    public static void main(String[] args) {
+package notify;
+
+public class NotifyOrder2 {
+    public static void main(String[] args) throws InterruptedException {
         Object o = new Object();
         Thread threadA = new Thread(() -> {
             for (int i = 0; i < 100; i += 2) {
@@ -14,9 +16,6 @@ public class NotifyOrder1 {
                 }
             }
             System.out.println("ThreadA final!");
-            synchronized (o) {
-                o.notify();
-            }
         });
 
         Thread threadB = new Thread(() -> {
@@ -35,6 +34,12 @@ public class NotifyOrder1 {
         });
 
         threadA.start();
+        // threadA.join(); // 这里A等待B其他线程的notify，mian获得了A的锁，等待A的结束，B等待main的执行
         threadB.start();
+        Thread.sleep(3000);
+        System.out.println("sleep");
+        threadA.join();
+        threadB.join();
+        System.out.println("over");
     }
 }

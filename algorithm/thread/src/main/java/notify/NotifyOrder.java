@@ -1,3 +1,4 @@
+package notify;
 
 public class NotifyOrder {
     private final Object flag = new Object();
