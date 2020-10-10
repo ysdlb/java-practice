@@ -1,3 +1,5 @@
+package notify;
+
 /*
 用于解释对象控制权
 Exception in thread "Thread-0" java.lang.IllegalMonitorStateException

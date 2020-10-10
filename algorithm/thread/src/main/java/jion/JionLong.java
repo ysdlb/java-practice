@@ -1,3 +1,5 @@
+package jion;
+
 public class JionLong {
 
     public static void main(String[] args) {

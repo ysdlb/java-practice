@@ -1,3 +1,5 @@
+package foundation;
+
 public class SimpleTimer {
     private static int count;
 
