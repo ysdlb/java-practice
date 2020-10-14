@@ -15,5 +15,8 @@ public class LearnOptional {
         Student s2 = null;
         System.out.println(s1 == s2);
         System.out.println(Objects.equals(s1, s2));
+
+        int i = 1;
+        System.out.println((++i) + (++i));
     }
 }
