@@ -14,7 +14,7 @@ public class CarTest {
     @Test
     @DisplayName("a simple dynamic proxy")
     void simpleProxyTest() {
-        Car car = new CarImpl();
+        CarImpl car = new CarImpl();
         CarHandler carHandler = new CarHandler(car);
 
         Car proxy = (Car) Proxy.newProxyInstance(
