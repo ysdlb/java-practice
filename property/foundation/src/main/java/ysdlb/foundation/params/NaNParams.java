@@ -26,8 +26,12 @@ public class NaNParams {
         System.out.println("input: 1,2,3 but fun(fun(), 4)");
         naN.func(naN.func(1,2,3), 4);
 
-        System.out.println("input: [1,2,3]");
+        System.out.println("下面这两个一起对比");
+        System.out.println("input: int[1,2,3]");
         naN.func(new int[]{1,2,3});
+
+        System.out.println("input: object[1,2,3]");
+        naN.func(new Object[]{1,2,3});
 
         System.out.println("input: null");
         naN.func(null);
@@ -53,7 +57,7 @@ public class NaNParams {
     }
 
     public static void main(String[] args) {
-        func2Test();
+        funcTest();
     }
 
 
