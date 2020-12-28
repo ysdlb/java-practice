@@ -4,6 +4,15 @@ import safe.collection.clazz.LockAddArrayList;
 
 import java.util.List;
 
+/**
+ * 1. read size
+ * 2. add size
+ * 3. save size
+ * 4. assign list[size]
+ *
+ * 少数据的原因: 两个线程都拿到了相同值的 size，虽然各自都把 size++，但最终的size值相较原来，只是+1，在这个过程中少了一个
+ * 数据为 null 的原因：一个线程成功把 size 加一且保存后，还没来得及赋值，另一个线程又把 size 加了一，这样 size + 1对应的那个位置就不会被赋值了
+ */
 public class ArrayListSafeTest {
     public static void main(String[] args) throws InterruptedException {
 
