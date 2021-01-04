@@ -17,6 +17,7 @@ public class CarTest {
         CarImpl car = new CarImpl();
         CarHandler carHandler = new CarHandler(car);
 
+
         Car proxy = (Car) Proxy.newProxyInstance(
                 car.getClass().getClassLoader(),
                 car.getClass().getInterfaces(),
@@ -24,6 +25,23 @@ public class CarTest {
         );
 
         proxy.run();
-    }
+        System.out.println("================");
+        System.out.println(proxy.get());
 
+        System.out.println("++++++++++++++++++++++++++++++");
+
+        Car proxy2 = (Car) Proxy.newProxyInstance(
+                car.getClass().getClassLoader(),
+                car.getClass().getInterfaces(),
+                (proxy_, method_, args_) -> {
+                    System.out.println("before proxy2");
+                    Object result = method_.invoke(car, args_);
+                    System.out.println("after proxy2");
+                    return  result;
+                }
+        );
+        proxy2.run();
+        System.out.println("================");
+        System.out.println(proxy2.get());
+    }
 }
