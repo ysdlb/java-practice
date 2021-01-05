@@ -1,4 +1,4 @@
-package semantic.generic;
+package semantic.generic.rawtype;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -32,14 +32,14 @@ public class RawType<T> {
     public void test(RawType rawType) {
         Set<Integer> integerSet = rawType.set1;         // warning: RawType.Inner is a raw type
 
-        Set<Integer> integerSet2 = rawType.set2;        // warning: Static member 'semantic.generic.RawType.set2' accessed via instance reference
+        Set<Integer> integerSet2 = rawType.set2;        // warning: Static member 'semantic.generic.rawtype.RawType.set2' accessed via instance reference
         Set<Integer> integerSet3 = RawType.set2;        // no warning
     }
 
     public void test1(RawType<?> rawType) {
         Set<Integer> integerSet = rawType.set1;         // no warning: type parameter given (wildcard OK!)
 
-        Set<Integer> integerSet2 = rawType.set2;        // warning: Static member 'semantic.generic.RawType.set2' accessed via instance reference
+        Set<Integer> integerSet2 = rawType.set2;        // warning: Static member 'semantic.generic.rawtype.RawType.set2' accessed via instance reference
         Set<Integer> integerSet3 = RawType.set2;        // no warning
     }
 }
