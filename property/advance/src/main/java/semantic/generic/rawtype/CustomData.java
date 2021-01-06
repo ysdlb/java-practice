@@ -2,10 +2,7 @@ package semantic.generic.rawtype;
 
 import lombok.Data;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Data
 public class CustomData<T> {
@@ -15,6 +12,8 @@ public class CustomData<T> {
     private List<Integer> list = new ArrayList<>();
 
     private Map<Integer, String> map = new HashMap<>();
+
+    private Set<? extends Number> set = new HashSet<>();
 
     public CustomData() {}
 

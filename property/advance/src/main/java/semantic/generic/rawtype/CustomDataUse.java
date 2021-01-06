@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 @SuppressWarnings("DuplicatedCode")
 public class CustomDataUse {
@@ -54,9 +55,14 @@ public class CustomDataUse {
 
     }
 
+    /**
+     * 非相关的参数化类型擦除的相当彻底, Set<? extends Number> 的 Number 也被擦除了
+     */
     @Test
     public void doRawType1() {
         CustomData stringDate = doReturnRawType("string");
+        Set<Number> set = stringDate.getSet();
+        Set<String> set1 = stringDate.getSet();
         List<Integer> list = stringDate.getList();
         list.add(1);
         List<String> listWrong = stringDate.getList();
