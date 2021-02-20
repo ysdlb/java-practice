@@ -1,7 +1,6 @@
 package proxy.dynamic;
 
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
 import proxy.dynamic.target.Car;
 import proxy.dynamic.target.CarImpl;
@@ -25,10 +24,15 @@ public class CarTest {
         );
 
         proxy.run();
+        System.out.println("===========hashCode()===========");
+        System.out.println("this: " + proxy.hashCode());
+
+        System.out.println("carHandler: " + carHandler.hashCode());
+        System.out.println("car: " + car.hashCode());
         System.out.println("================");
         System.out.println(proxy.get());
 
-        System.out.println("++++++++++++++++++++++++++++++");
+        System.out.println("\n++++++++++++++++++++++++++++++\n");
 
         Car proxy2 = (Car) Proxy.newProxyInstance(
                 car.getClass().getClassLoader(),

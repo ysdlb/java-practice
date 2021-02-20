@@ -19,7 +19,16 @@ public class CarHandler implements InvocationHandler {
 
     public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
         System.out.println("before");
-        Object result = method.invoke(car, args);
+        System.out.println(method.getDeclaringClass());
+        Object result;
+        if (Object.class.equals(method.getDeclaringClass())) {
+            result = method.invoke(this, args);
+            // 会无限循环，抛异常
+            // System.out.println("proxy: " + proxy.hashCode());
+            System.out.println("car: " + car.hashCode());
+        } else {
+            result = method.invoke(car, args);
+        }
         System.out.println("after");
         return  result;
     }
