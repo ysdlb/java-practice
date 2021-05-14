@@ -19,8 +19,15 @@ public class ObjectHeader {
     }
 
     @Test
-    void arrayInstance() {
+    void arrayEmptyInstance() {
         int[] o = new int[]{};
+        String printable = ClassLayout.parseInstance(o).toPrintable();
+        System.out.println(printable);
+    }
+
+    @Test
+    void arrayInstance() {
+        int[] o = new int[]{1, 2};
         String printable = ClassLayout.parseInstance(o).toPrintable();
         System.out.println(printable);
     }
