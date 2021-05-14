@@ -20,7 +20,7 @@ public class CRC32Test {
              i < all;
              i++, uid += 2, deviceId += 3) {
 
-            String str = String.valueOf(i) + (i) + "rec_trans";
+            String str = String.valueOf(i) + (i) + "test_trans";
             CRC32 crc32 = new CRC32();
             crc32.update(str.getBytes());
             long hash = crc32.getValue();
