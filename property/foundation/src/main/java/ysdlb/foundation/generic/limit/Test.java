@@ -1,11 +1,8 @@
 package ysdlb.foundation.generic.limit;
 
-import com.sun.scenario.animation.shared.AnimationAccessor;
 import ysdlb.foundation.component.Animal;
-import ysdlb.foundation.component.Chicken;
 import ysdlb.foundation.component.Dog;
 
-import java.util.HashMap;
 import java.util.function.Function;
 
 public class Test {

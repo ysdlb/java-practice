@@ -1,7 +1,5 @@
 package ysdlb.foundation.utils;
 
-import org.omg.PortableInterceptor.SYSTEM_EXCEPTION;
-
 public class KeyUtils {
     private static String generateKey(Object... objects) {
         StringBuffer buffer = new StringBuffer();
