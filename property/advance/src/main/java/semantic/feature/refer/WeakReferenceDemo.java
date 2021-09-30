@@ -19,7 +19,7 @@ public class WeakReferenceDemo {
         System.out.println("未进行gc时，只有弱引用指向value内存区域：" + weakReference.get());
         //此时已无强一用执行"value"所在内存区域，gc时会回收弱引用
         System.gc();
-        //此时输出都为nuill
+        //此时输出都为null
         System.out.println("进行gc时，只有弱引用指向value内存区域：" + weakReference.get());
 
     }
@@ -35,7 +35,7 @@ public class WeakReferenceDemo {
         System.out.println("未进行gc时，只有弱引用指向value内存区域：" + weakReference.get());
         //此时已无强一用执行"value"所在内存区域，gc时会尝试回收弱引用，但常量无法回收
         System.gc();
-        //此时输出都为nuill
+        //此时输出都为null
         System.out.println("进行gc时，只有弱引用指向value内存区域：" + weakReference.get());
 
     }
