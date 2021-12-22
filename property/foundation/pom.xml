@@ -40,6 +40,11 @@
                 <configuration>
                     <source>15</source>
                     <target>15</target>
+                    <compilerArgument>
+                        <!--
+                        add-exports java.xml/com.sun.xml.internal.stream.util=ALL-UNNAMED
+                        -->
+                    </compilerArgument>
                 </configuration>
             </plugin>
         </plugins>

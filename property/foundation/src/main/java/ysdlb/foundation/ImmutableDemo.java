@@ -1,6 +1,6 @@
 package ysdlb.foundation;
 
-import com.sun.xml.internal.stream.util.ReadOnlyIterator;
+//import com.sun.xml.internal.stream.util.ReadOnlyIterator;
 import ysdlb.foundation.component.Animal;
 
 import java.util.Iterator;
@@ -19,6 +19,7 @@ public final class ImmutableDemo implements Iterable<Animal> {
 
     @Override
     public final Iterator<Animal> iterator() {
-        return new ReadOnlyIterator(animals.iterator());
+//        return new ReadOnlyIterator(animals.iterator());
+        return null;
     }
 }
