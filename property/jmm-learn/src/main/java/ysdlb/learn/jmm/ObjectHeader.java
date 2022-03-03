@@ -31,4 +31,17 @@ public class ObjectHeader {
         String printable = ClassLayout.parseInstance(o).toPrintable();
         System.out.println(printable);
     }
+
+    @Test
+    void objectInstance() {
+        OO o = new OO();
+        String printable = ClassLayout.parseInstance(o).toPrintable();
+        System.out.println(printable);
+    }
+
+    private static class OO {
+        private byte a;
+        private short b;
+        private int c;
+    }
 }

@@ -1,7 +1,11 @@
 package ysdlb.foundation.type;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
+
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 /**
  * 强转导致对范型擦除
