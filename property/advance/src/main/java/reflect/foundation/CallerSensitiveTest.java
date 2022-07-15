@@ -6,8 +6,6 @@ import jdk.internal.reflect.Reflection;
 import org.junit.jupiter.api.Test;
 
 /**
- * https://my.oschina.net/u/2382040/blog/3145937 <br>
- *
  * jdk9 之后，运行时要将 这个包 通过 module 导出来， jvm 参数如下：
  * --add-opens java.base/jdk.internal.reflect=ALL-UNNAMED
  */
