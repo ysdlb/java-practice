@@ -13,6 +13,8 @@ public class SmartLockTest {
         int threadCount = 20;
         int addCount = 100_000;
 
+        Thread.currentThread().interrupt();
+
         SmartAdder smartAdder = new SmartAdder();
         CountDownLatch latch = new CountDownLatch(threadCount);
 
