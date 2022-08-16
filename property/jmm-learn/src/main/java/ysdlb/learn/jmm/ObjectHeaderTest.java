@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Test;
 import org.openjdk.jol.info.ClassLayout;
 import org.openjdk.jol.vm.VM;
 
-public class ObjectHeader {
+public class ObjectHeaderTest {
 
     @Test
     void vm() {
