@@ -6,13 +6,13 @@ plugins {
 
 dependencies {
     constraints {
-        api("org.junit:junit-bom:5.7.0")
+        api("org.junit:junit-bom:5.8.1")
     }
 }
 
 allprojects {
     repositories {
+        mavenLocal()
         mavenCentral()
-        // etc...
     }
 }
