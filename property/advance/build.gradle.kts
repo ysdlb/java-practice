@@ -2,6 +2,12 @@ plugins {
     `java-library`
 }
 
+java {
+    toolchain {
+        languageVersion.set(JavaLanguageVersion.of(11))
+    }
+}
+
 dependencies {
     api("org.junit:junit-bom:5.9.0")?.let { platform(it) }
 
