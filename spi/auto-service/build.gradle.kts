@@ -10,7 +10,7 @@ dependencies {
     testCompileOnly("com.google.auto.service:auto-service-annotations:1.0.1")
 
     testImplementation("org.junit.jupiter:junit-jupiter-api:5.6.0")
-    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine")
+    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.6.0")
 }
 
 tasks.getByName<Test>("test") {
