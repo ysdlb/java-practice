@@ -7,13 +7,14 @@ import net.bytebuddy.dynamic.ClassFileLocator;
 import net.bytebuddy.dynamic.loading.ByteArrayClassLoader;
 import net.bytebuddy.matcher.ElementMatchers;
 import org.ysdlb.bytebuddy.dep.advice.Cooker;
+import org.ysdlb.io.ColorOut;
 
 import java.lang.instrument.ClassFileTransformer;
 
 public class LocalAdviceTest {
-    public static LocalAdviceTest INSTANCE = new LocalAdviceTest();
+    private static LocalAdviceTest INSTANCE = new LocalAdviceTest();
 
-    ClassLoader classLoader;
+    private ClassLoader classLoader;
 
 
     /**
@@ -54,17 +55,58 @@ public class LocalAdviceTest {
 
 
     public void print() throws Exception {
+        // 非增强的
+        {
+            Cooker cooker = new Cooker();
+
+            ColorOut.rPrintln("hello:");
+            cooker.hello();
+
+            ColorOut.rPrintln("static taste:");
+            Cooker.taste("proto");
+
+            ColorOut.rPrintln("makeFood:");
+            cooker.makeFood("proto", 1, new Double[]{1D, 2D});
+
+            ColorOut.rPrintln("classloader:");
+            System.out.println(cooker.getClass().getClassLoader());
+        }
+
+        System.out.println("\033[38;5;118m ======增强======== \033[0m");
+
+
+        // 增强
         Class<Cooker> cookerType = (Class<Cooker>) classLoader.loadClass(Cooker.class.getName());
-        // Ex: java.lang.ClassCastException: class org.ysdlb.bytebuddy.dep.advice.Cooker cannot be cast
-        // to class org.ysdlb.bytebuddy.dep.advice.Cooker (org.ysdlb.bytebuddy.dep.advice.Cooker is
-        // in unnamed module of loader net.bytebuddy.dynamic.loading.ByteArrayClassLoader$ChildFirst @7a7b0070;
-        // org.ysdlb.bytebuddy.dep.advice.Cooker is in unnamed module of loader 'app')
-        // Cooker cooker = cookerType.getDeclaredConstructor().newInstance();
-        // cooker.hello();
-        cookerType.getDeclaredConstructor().newInstance().hello();
-        Cooker.taste("proto");
-        cookerType.getDeclaredMethod("taste", String.class).invoke(null, "pototo");
-        // cookerType.getMethod("makeFood", String.class, int.class, Double[].class).invoke(cooker, "pototo", 1, new Double[]{1.0, 2.0});
+        {
+            Object cooker = cookerType.getDeclaredConstructor().newInstance();
+
+            ColorOut.rPrintln("hello:");
+            cookerType.getDeclaredMethod("hello").invoke(cooker);
+
+            ColorOut.rPrintln("static taste:");
+            cookerType.getDeclaredMethod("taste", String.class).invoke(null, "pototo");
+
+            ColorOut.rPrintln("makeFood:");
+            cookerType.getMethod("makeFood", String.class, int.class, Double[].class).invoke(cooker, "pototo", 1, new Double[]{1.0, 2.0});
+
+            ColorOut.rPrintln("classloader:");
+            System.out.println(cooker.getClass().getClassLoader());
+        }
+
+        System.out.println("\033[38;5;118m ======同类型不同 classLoader 发生隐式转换 ======== \033[0m");
+        try {
+            // Ex: java.lang.ClassCastException: class org.ysdlb.bytebuddy.dep.advice.Cooker cannot be cast
+            // to class org.ysdlb.bytebuddy.dep.advice.Cooker (org.ysdlb.bytebuddy.dep.advice.Cooker is
+            // in unnamed module of loader net.bytebuddy.dynamic.loading.ByteArrayClassLoader$ChildFirst @7a7b0070;
+            //
+            // org.ysdlb.bytebuddy.dep.advice.Cooker is in unnamed module of loader 'app')
+            Cooker cooker = cookerType.getDeclaredConstructor().newInstance();
+            cooker.hello();
+            //
+            // same as: cookerType.getDeclaredConstructor().newInstance().hello()
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public static void main(String[] args) throws Exception {
