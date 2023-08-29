@@ -16,4 +16,8 @@ public class ColorOut {
         OUT.println(RED + s + ERASE);
     }
 
+    public static void info(String s) {
+        rPrintln(s);
+    }
+
 }
